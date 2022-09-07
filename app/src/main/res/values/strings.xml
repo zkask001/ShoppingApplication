@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Shopping Application</string>
     <string name="my_string">My String</string>
+    <string-array name="usertype">
+        <item>user</item>
+        <item>supermarket</item>
+    </string-array>
 </resources>
