@@ -43,12 +43,12 @@ public class LoginActivity extends AppCompatActivity {
                 //save user selected item (user or supermarket)
                 String item = _spinner.getSelectedItem().toString();
                 //if user selected, open up user activity using an intent
-                if(_txtUser.getText().toString().equals("user") && _txtPass.getText().toString().equals("user") && item.equals("user")){
+                if(_txtUser.getText().toString().equals("User") && _txtPass.getText().toString().equals("User") && item.equals("User")){
                     Intent intent = new Intent(LoginActivity.this, UserActivity.class);
                     startActivity(intent);
                 }
                 //if supermarket selected, open up supermarket activity using an intent
-                else if(_txtUser.getText().toString().equals("supermarket") && _txtPass.getText().toString().equals("supermarket") && item.equals("supermarket"))
+                else if(_txtUser.getText().toString().equals("Supermarket") && _txtPass.getText().toString().equals("Supermarket") && item.equals("Supermarket"))
                 {
                     Intent intent = new Intent(LoginActivity.this, SupermarketActivity.class);
                     startActivity(intent);
