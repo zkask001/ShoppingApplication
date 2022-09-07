@@ -10,18 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApplication">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="Settings"
             android:parentActivityName=".MainActivity" />
-
-        //:label = change name displayed at top of activity
-        //:parentActivityName = make activity a child of main activity, shows a back arrow at top
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter> //decides which activity opens up first
+            <intent-filter>
+                //decides which activity opens up first
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
