@@ -48,7 +48,6 @@
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                //decides which activity opens up first
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
