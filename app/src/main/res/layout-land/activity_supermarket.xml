@@ -8,14 +8,13 @@
 
     <ImageView
         android:id="@+id/floorplan"
-        android:layout_width="726dp"
-        android:layout_height="414dp"
+        android:layout_width="801dp"
+        android:layout_height="371dp"
         android:layout_marginStart="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.257"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:srcCompat="@drawable/ic_launcher_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
