@@ -68,4 +68,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void launchRegister(View v){
+        //launch the register page
+
+        Intent i = new Intent(this, RegisterActivity.class);
+        startActivity(i);
+    }
+
 }
