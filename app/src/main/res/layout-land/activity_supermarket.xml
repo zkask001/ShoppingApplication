@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/floorplan"
-        android:layout_width="390dp"
-        android:layout_height="415dp"
+        android:layout_width="726dp"
+        android:layout_height="414dp"
         android:layout_marginStart="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
