@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class UserActivity extends AppCompatActivity {
 
     @Override
@@ -19,5 +21,11 @@ public class UserActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
+    }
+
+    public void logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(),LoginActivity2.class));
+        finish();
     }
 }

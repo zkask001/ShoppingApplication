@@ -83,14 +83,14 @@ public class RegisterActivity extends AppCompatActivity {
                     //store the data in the database
                     df.set(userInfo);
 
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
                     finish(); //user can't go back using back button
                 }
                 //OnFailureListener for when user account not created
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(RegisterActivity.this, "Failed to Create Account",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -100,13 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 //        redirect user to login screen after registration
-                goToLogin.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
-                    }
+        goToLogin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
+            }
 
-                });
+        });
     }
 
     //method to check if all fields are filled in by user

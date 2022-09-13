@@ -36,9 +36,9 @@ public class LoginActivity2 extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        email = findViewById(R.id.LoginEmail);
-        password = findViewById(R.id.LoginPassword);
-        loginBtn = findViewById(R.id.LoginBtn);
+        email = findViewById(R.id.loginEmail);
+        password = findViewById(R.id.loginPassword);
+        loginBtn = findViewById(R.id.loginBtn);
         goToRegister = findViewById(R.id.goToRegister);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class LoginActivity2 extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
+                            Toast.makeText(LoginActivity2.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -99,7 +99,7 @@ public class LoginActivity2 extends AppCompatActivity {
                     finish();
                 }
             }
-        })
+        });
     }
 
     //method to check if all fields are filled in by user
@@ -120,7 +120,9 @@ public class LoginActivity2 extends AppCompatActivity {
 
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),LoginActivity2.class));
+            Toast.makeText(LoginActivity2.this, "Another User is Logged In", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
             finish();
         }
     }
