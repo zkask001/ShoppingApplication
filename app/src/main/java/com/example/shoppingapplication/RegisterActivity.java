@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     //register activity components initialised
     EditText fullName, email, password, phone;
     Button createAccountBtn, goToLogin;
+    CheckBox isUserBox, isSupermarketBox;
     boolean valid = true;
     //firebase authentication and firestore database variables set
     FirebaseAuth fAuth;
@@ -46,6 +49,27 @@ public class RegisterActivity extends AppCompatActivity {
         createAccountBtn = findViewById(R.id.createAccountBtn);
         goToLogin = findViewById(R.id.goToLogin);
 
+        isUserBox = findViewById(R.id.isUser);
+        isSupermarketBox = findViewById(R.id.isSupermarket);
+
+        //check box logic (user can only check one selection box)
+        isUserBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    isSupermarketBox.setChecked(false);
+                }
+            }
+        });
+        isSupermarketBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    isUserBox.setChecked(false);
+                }
+            }
+        });
+
         //after clicking register button, field checks are made
         createAccountBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,9 +80,16 @@ public class RegisterActivity extends AppCompatActivity {
                 checkField(password);
                 checkField(phone);
 
+                //selection validation check (customer/supermarket)
+                if(!(isUserBox.isChecked() || isSupermarketBox.isChecked())){
+                    Toast.makeText(RegisterActivity.this, "Select Your User Type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
         //check if data entered by user is valid
         if(valid){
-            //if valid, usr registration starts
+            //if valid, user registration starts
 
             //create a user using entered email and password
             fAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -78,13 +109,26 @@ public class RegisterActivity extends AppCompatActivity {
                     userInfo.put("UserEmail",email.getText().toString());
                     userInfo.put("PhoneNumber",phone.getText().toString());
                     //specify whether the user is a client user
-                    userInfo.put("isUser","1");
+                    if(isSupermarketBox.isChecked()){
+                        userInfo.put("isSupermarket", "1");
+                    }
+                    if(isUserBox.isChecked()){
+                        userInfo.put("isUser", "1");
+                    }
 
                     //store the data in the database
                     df.set(userInfo);
 
-                    startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
-                    finish(); //user can't go back using back button
+                    //send user to the right activity for their selected user type
+                    if(isUserBox.isChecked()){
+                        startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                        finish();//user can't go back using back button
+                    }
+                    if(isSupermarketBox.isChecked()){
+                        startActivity(new Intent(getApplicationContext(), SupermarketActivity.class));
+                        finish();//user can't go back using back button
+                    }
+
                 }
                 //OnFailureListener for when user account not created
             }).addOnFailureListener(new OnFailureListener() {

@@ -115,15 +115,32 @@ public class LoginActivity2 extends AppCompatActivity {
         return valid;
     }
 
-    //check that no other user is logged in
+    //check that no other user is logged in + check data from the logged in user
     public void onStart() {
 
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),LoginActivity2.class));
-            Toast.makeText(LoginActivity2.this, "Another User is Logged In", Toast.LENGTH_SHORT).show();
-            FirebaseAuth.getInstance().signOut();
-            finish();
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.getString("isSupermarket") != null){
+                        startActivity(new Intent(getApplicationContext(), SupermarketActivity.class));
+                        finish();//user can't go back using back button
+                    }
+                    if(documentSnapshot.getString("isUser") != null){
+                        startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                        finish();//user can't go back using back button
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity2.class));
+                    finish();
+                }
+            });
         }
     }
 }
