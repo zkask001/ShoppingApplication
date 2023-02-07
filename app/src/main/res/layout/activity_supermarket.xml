@@ -29,4 +29,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.127"
         app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/locationPin"
+        android:layout_width="49dp"
+        android:layout_height="44dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="473dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
