@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public void launchIndoorMap(View v){
         //launch the login page
 
-        Intent i = new Intent(this, IndoorMapActivity.class);
+        Intent i = new Intent(this, IndoorMapActivity2.class);
         startActivity(i);
     }
 
