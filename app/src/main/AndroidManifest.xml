@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApplication">
         <activity
+            android:name=".indoor_map_simple"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".IndoorMapActivity2"
             android:exported="false">
             <meta-data

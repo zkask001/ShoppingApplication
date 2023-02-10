@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -30,15 +31,24 @@ public class IndoorMapActivity2 extends AppCompatActivity implements OnMapReadyC
     // Get a handle to the GoogleMap object and display marker.
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
+//        googleMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(0, 0))
+//                .title("Marker"));
 
-        LatLng newarkLatLng = new LatLng(40.714086, -74.228697);
+        LatLng newarkLatLng = new LatLng(51.336916,-0.117010);
 
-//        GroundOverlayOptions newarkMap = new GroundOverlayOptions()
-//                .image(BitmapDescriptorFactory.fromResource(R.drawable.ic_test_floorplan))
-//                .position(newarkLatLng, 8600f, 6500f);
-//        googleMap.addGroundOverlay(newarkMap);
+        //ground overlay to add an indoor map image to google maps
+        GroundOverlayOptions newarkMap = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.indoor_map))
+                .position(newarkLatLng, 70f, 60f);
+        googleMap.addGroundOverlay(newarkMap);
+
+        //move camera on start to the desired location
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newarkLatLng, 17));
+
+        //add zoom controls to map
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        //allow user to zoom in and out using pinch gestures
+        googleMap.getUiSettings().setZoomGesturesEnabled(true);
     }
 }
