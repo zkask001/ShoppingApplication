@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Shopping Application - Home"); //change name displayed at top of main activity
+        setTitle(""); //change name displayed at top of main activity
     }
 
     public void toggle(View v){
@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity {
 //        button.setText("New Disabled");
 //    }
 
-    public void handleText(View v){ //get text from a text field + change another text with the input
-        TextView t = findViewById(R.id.source);
-        String input = t.getText().toString();
-        ((TextView)findViewById(R.id.output)).setText(input);
-
-        Toast.makeText(this, "Alert", Toast.LENGTH_LONG).show(); //shows alert
-                                    //or input
-        Log.d("info", input);
-    }
+//    public void handleText(View v){ //get text from a text field + change another text with the input
+//        TextView t = findViewById(R.id.source);
+//        String input = t.getText().toString();
+//        ((TextView)findViewById(R.id.output)).setText(input);
+//
+//        Toast.makeText(this, "Alert", Toast.LENGTH_LONG).show(); //shows alert
+//                                    //or input
+//        Log.d("info", input);
+//    }
 
     public void launchSettings(View v){
         //launch a new activity
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, SettingsActivity.class);
         //this refers to current activity (main activity in this case)
 
-        //pass data between activities:
-        String message = ((EditText)findViewById(R.id.editTextTextPersonName2)).getText().toString();
-        i.putExtra("COOL", message);
+//        //pass data between activities:
+//        String message = ((EditText)findViewById(R.id.editTextTextPersonName2)).getText().toString();
+//        i.putExtra("COOL", message);
 
         startActivity(i);
     }

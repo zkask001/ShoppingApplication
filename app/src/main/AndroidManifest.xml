@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApplication">
         <activity
+            android:name=".ShoppingListActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".indoor_map_simple"
             android:exported="false">
             <meta-data
@@ -20,17 +27,22 @@
         </activity>
         <activity
             android:name=".IndoorMapActivity2"
-            android:exported="false">
+            android:exported="false"
+            android:label="">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".LoginActivity2"
-            android:exported="false" />
+            android:exported="false"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label=""
+            android:parentActivityName=".MainActivity" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -62,7 +74,7 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:label="Settings"
+            android:label=""
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
