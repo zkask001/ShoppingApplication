@@ -32,55 +32,40 @@ import com.google.firebase.storage.StorageReference;
 
 public class indoor_map_simple extends AppCompatActivity {
 
-//    private static final ProductLocation[] PRODUCT_LOCATIONS = {
-//            new ProductLocation("Product 1", 100, 200),
-//            new ProductLocation("Product 2", 150, 250),
-//            new ProductLocation("Product 3", 200, 300),
-//    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indoor_map_simple);
 
-        // Get a reference to the Firebase Storage instance
+        // get a reference to the Firebase Storage instance
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
-// Create a reference to the image file you want to retrieve
+        // create a reference to the image file you want to retrieve
         String imageUrl = "gs://shopping-application-8b7c0.appspot.com/floorplans/indoormapimage.jpg";
         StorageReference imageRef = storage.getReferenceFromUrl(imageUrl);
 
-// Download the image and convert it to a Bitmap
+        // download the image and convert it to a Bitmap
         final long ONE_MEGABYTE = 1024 * 1024;
         imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-                // Set the image to an ImageView
+                // set the image to an ImageView
                 ImageView imageView = findViewById(R.id.indoor_map_view);
                 imageView.setImageBitmap(bitmap);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors that occur
 
-                // Handle any errors that occurred while downloading the image
+                // handle errors that occurred while downloading the image
                 Log.e(TAG, "Error downloading image from Firebase Storage", exception);
             }
         });
 
-//        IndoorMapView indoorMapView = findViewById(R.id.indoorMapView);
-//        indoorMapView.setProductLocations(PRODUCT_LOCATIONS);
-//        indoorMapView.setOnProductClickListener(new IndoorMapView.OnProductClickListener() {
-//            @Override
-//            public void onProductClick(ProductLocation productLocation) {
-//                Toast.makeText(getContext(), productLocation.productName, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
+        // retrieve relevant views from layout file
         ImageView imageView = findViewById(R.id.indoor_map_view);
         EditText productNameEditText = findViewById(R.id.product_name);
         EditText stockNumberEditText = findViewById(R.id.stock_number);
@@ -89,12 +74,12 @@ public class indoor_map_simple extends AppCompatActivity {
         EditText searchProductBar = findViewById(R.id.search_item);
         Button searchProductButton = findViewById(R.id.search_item_button);
         ImageView placeholderPinpoint = findViewById(R.id.location_pinpoint_image);
-
         TextView productInfo = findViewById(R.id.productInfo);
 
 
-        // Get a reference to the root view of the activity
+        // get a reference to the root view of the activity
         View root = findViewById(android.R.id.content);
+        // set an on touch listener to detect screen clicks on image while selecting product location
         root.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -102,20 +87,20 @@ public class indoor_map_simple extends AppCompatActivity {
                     float x = event.getX();
                     float y = event.getY();
 
-                    // Check if the touch event is within the bounds of the image view
+                    // check if the touch event is within the bounds of the image view
                     Rect rect = new Rect();
                     imageView.getGlobalVisibleRect(rect);
 
                     if (rect.contains((int)x, (int)y)) {
-                        // The touch event occurred within the bounds of the image view
+                        // the touch event occurred within the bounds of the image view
                         Toast.makeText(indoor_map_simple.this, "Clicked at x=" + x + ", y=" + y, Toast.LENGTH_SHORT).show();
 
-                        // Place a placeholder icon at the touch event coordinates
+                        // place a placeholder icon at the touch event coordinates
                         placeholderIcon.setX(x - 60);
                         placeholderIcon.setY(y - 60);
                         placeholderIcon.setVisibility(View.VISIBLE);
 
-                        // Clear the placeholder pin
+                        // clear the placeholder pin
                         placeholderPinpoint.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -123,19 +108,19 @@ public class indoor_map_simple extends AppCompatActivity {
             }
         });
 
-
+        // set an on touch listener for the save-product button
         saveProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Check initially if placeholder icon is visible, indicating a location has been selected
+                // check initially if placeholder icon is visible, indicating a location has been selected
                 if (placeholderIcon.getVisibility() == View.VISIBLE) {
 
-                    // Get the X and Y coordinates of the last touch event on the image
+                    // get the X and Y coordinates of the last touch event on the image
                     float x = placeholderIcon.getX();
                     float y = placeholderIcon.getY();
 
-                    // Save the coordinates and product information to Firebase
+                    // save the coordinates and product information to Firebase
                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("products");
                     String productId = databaseRef.push().getKey();
                     String productName = productNameEditText.getText().toString();
@@ -144,29 +129,30 @@ public class indoor_map_simple extends AppCompatActivity {
                     Product product = new Product(productId, productName, stockNumber, x, y);
                     databaseRef.child(productId).setValue(product);
 
-                    // Clear the product name and stock number fields
+                    // clear the product name and stock number fields
                     productNameEditText.setText("");
                     stockNumberEditText.setText("");
 
-                    // Clear the placeholder icon
+                    // clear the placeholder icon
                     placeholderIcon.setVisibility(View.INVISIBLE);
 
-                    // Inform user the product has been added successfully
+                    // inform user the product has been added successfully
                     Toast.makeText(indoor_map_simple.this, productName + " has been added", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    // Inform user they need to select a location on the indoor map
+                    // inform user they need to select a location on the indoor map
                     Toast.makeText(indoor_map_simple.this, "Please select a location for the product", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
+        // set on click listener for the search-product button
         searchProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Retrieve the coordinates and product information from Firebase
+                // retrieve the coordinates and product information from Firebase
                 DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("products");
                 Query query = databaseRef.orderByChild("productName").equalTo(searchProductBar.getText().toString());
 
@@ -177,44 +163,44 @@ public class indoor_map_simple extends AppCompatActivity {
                             DataSnapshot productSnapshot = snapshot.getChildren().iterator().next();
                             Product product = productSnapshot.getValue(Product.class);
 
-                            // Set the X and Y coordinates of the placeholder pinpoint to the location stored in the database
+                            // set the X and Y coordinates of the placeholder pinpoint to the location stored in the database
                             placeholderPinpoint.setX(product.getX());
                             placeholderPinpoint.setY(product.getY() - 70);
 
-                            // Show the placeholder pinpoint
+                            // show the placeholder pinpoint
                             placeholderPinpoint.setVisibility(View.VISIBLE);
 
-                            // Clear the placeholder icon
+                            // clear the placeholder icon
                             placeholderIcon.setVisibility(View.INVISIBLE);
 
-                            // Get the product name and stock number from the snapshot
+                            // get the product name and stock number from the snapshot
                             String productName = product.getProductName();
                             int stockNumber = product.getStockNumber();
 
-                            // Set the attributes of the products
+                            // set the attributes of the products
                             productInfo.setText("Product name: " + productName + ", Number in stock: " + stockNumber);
 
-                            //Make the constraint layout with product details visible
+                            //make the constraint layout with product details visible
                             productInfo.setVisibility(View.VISIBLE);
 
-                            // Inform user the product has been found
+                            // inform user the product has been found
                             Toast.makeText(indoor_map_simple.this, product.getProductName() + " has been found", Toast.LENGTH_SHORT).show();
                         } else {
-                            // Inform user the product could not be found
+                            // inform user the product could not be found
                             Toast.makeText(indoor_map_simple.this, "Product not found", Toast.LENGTH_SHORT).show();
 
-                            // Make the pinpoint invisible
+                            // make the pinpoint invisible
                             placeholderPinpoint.setVisibility(View.INVISIBLE);
-                            // Clear the placeholder icon
+                            // clear the placeholder icon
                             placeholderIcon.setVisibility(View.INVISIBLE);
-                            // Clear product information
+                            // clear product information
                             productInfo.setVisibility(View.INVISIBLE);
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle error here
+                        // handle database errors
                         if (error != null) {
                             Log.e("TAG", "Database error: " + error.getMessage());
                         } else {
@@ -223,7 +209,7 @@ public class indoor_map_simple extends AppCompatActivity {
                     }
                 });
 
-                // Clear the search bar
+                // clear the search bar
                 searchProductBar.setText("");
             }
         });

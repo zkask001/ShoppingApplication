@@ -23,12 +23,19 @@ public class UserActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void launchShoppingList(View v){
-        //launch the shopping list page
+    public void launchIndoorMap2(View v){
+        //launch the login page
 
-        Intent i = new Intent(this, ShoppingListActivity.class);
+        Intent i = new Intent(this, indoor_map_simple.class);
         startActivity(i);
     }
+
+//    public void launchShoppingList(View v){
+//        //launch the shopping list page
+//
+//        Intent i = new Intent(this, ShoppingListActivity.class);
+//        startActivity(i);
+//    }
 
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();

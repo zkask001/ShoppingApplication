@@ -87,14 +87,12 @@ public class LoginActivity2 extends AppCompatActivity {
                 //identify user type
                 if(documentSnapshot.getString("isUser") != null){
                     //user is customer
-
                     startActivity(new Intent(getApplicationContext(),UserActivity.class));
                     finish();
                 }
 
                 if(documentSnapshot.getString("isSupermarket") != null){
                     //user is supermarket
-
                     startActivity(new Intent(getApplicationContext(),SupermarketActivity.class));
                     finish();
                 }
@@ -120,7 +118,8 @@ public class LoginActivity2 extends AppCompatActivity {
 
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid());
             df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {

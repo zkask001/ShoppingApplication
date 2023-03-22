@@ -144,7 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-//        redirect user to login screen after registration
+        //redirect user to login screen after registration
         goToLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

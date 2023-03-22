@@ -43,13 +43,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/mapButton"
+        android:id="@+id/mapButton3"
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="392dp"
         android:onClick="launchMaps"
-        android:text="Search Product"
+        android:text="Launch Map"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +58,7 @@
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:onClick="launchShoppingList"
         android:text="Shopping List"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,9 +69,21 @@
         android:layout_width="175dp"
         android:layout_height="50dp"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
         android:onClick="logout"
         android:text="Log Out"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapButton2" />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="452dp"
+        android:onClick="launchIndoorMap2"
+        android:text="Search Product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,15 +10,22 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Product"
+        android:text="Search Supermarkets"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <EditText
+    <SearchView
         android:id="@+id/search_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Type in a product name..." />
+        android:iconifiedByDefault="false"
+        android:queryHint="Type in a food store name..." />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"

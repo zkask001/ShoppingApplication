@@ -93,4 +93,18 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, indoor_map_simple.class);
         startActivity(i);
     }
+
+    public void launchOldLogin(View v){
+        //launch the login page
+
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
+//    public void launchShoppingList(View v){
+//        //launch the shopping list activity
+//
+//        Intent i = new Intent(this, ShoppingListActivity.class);
+//        startActivity(i);
+//    }
 }

@@ -18,17 +18,17 @@ public class IndoorMapActivity2 extends AppCompatActivity implements OnMapReadyC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Set the layout file as the content view.
+        //set the layout file as the content view.
         setContentView(R.layout.activity_indoor_map2);
 
-        // Get a handle to the fragment and register the callback.
+        //get a handle to the fragment and register the callback.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
     }
 
-    // Get a handle to the GoogleMap object and display marker.
+    //get a handle to the GoogleMap object and display marker.
     @Override
     public void onMapReady(GoogleMap googleMap) {
 //        googleMap.addMarker(new MarkerOptions()
