@@ -49,7 +49,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // set up the marker for the store
         LatLng storeLocation = new LatLng(51.4067, 0.0145);
         Marker storeMarker = mMap.addMarker(new MarkerOptions().position(storeLocation).title("Food Store"));
-        storeMarker.setVisible(false); // Hide the marker by default
+        // hide the marker by default
+        storeMarker.setVisible(false);
 
         // set up the search bar
         binding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

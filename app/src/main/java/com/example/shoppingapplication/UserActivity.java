@@ -30,6 +30,12 @@ public class UserActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void launchIndoorMap3(View v){
+        //launch the login page
+
+        Intent i = new Intent(this, indoor_map_simple_user.class);
+        startActivity(i);
+    }
 //    public void launchShoppingList(View v){
 //        //launch the shopping list page
 //

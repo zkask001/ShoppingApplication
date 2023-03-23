@@ -81,7 +81,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="108dp"
         android:layout_marginTop="452dp"
-        android:onClick="launchIndoorMap2"
+        android:onClick="launchIndoorMap3"
         android:text="Search Product"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
