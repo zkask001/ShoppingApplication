@@ -28,6 +28,13 @@ public class LoginActivity2 extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
+    public void launchSettings(View v){
+        //launch the settings page
+
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

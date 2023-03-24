@@ -16,6 +16,13 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
     }
 
+    public void launchSettings(View v){
+        //launch the settings page
+
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+    }
+
     public void launchMaps(View v){
         //launch the map page
 

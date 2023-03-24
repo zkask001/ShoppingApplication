@@ -16,6 +16,13 @@ public class SupermarketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_supermarket);
     }
 
+    public void launchSettings(View v){
+        //launch the settings page
+
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+    }
+
     public void launchInfo(View v){
         //launch the store information page
 

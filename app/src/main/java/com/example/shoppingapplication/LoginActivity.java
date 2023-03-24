@@ -18,6 +18,13 @@ public class LoginActivity extends AppCompatActivity {
     Button _btnLogin;
     Spinner _spinner;
 
+    public void launchSettings(View v){
+        //launch the settings page
+
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
