@@ -4,37 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SupermarketActivity">
+    tools:context=".UserActivity">
 
     <Button
-        android:id="@+id/logoutBtnSup"
-        android:layout_width="286dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="116dp"
-        android:onClick="logout"
-        android:text="Log Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/floorplan"
-        android:layout_width="342dp"
-        android:layout_height="388dp"
-        android:layout_marginStart="3dp"
+        android:id="@+id/settings4"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/yellow"
+        android:onClick="launchSettings"
+        app:icon="@android:drawable/ic_menu_manage"
+        app:iconTint="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <ImageView
-        android:id="@+id/locationPin"
-        android:layout_width="49dp"
-        android:layout_height="44dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="473dp" />
+        android:id="@+id/imageView2"
+        android:layout_width="403dp"
+        android:layout_height="460dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo_no_background" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="134dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="676dp"
+        android:text="Supermarket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mapButton3"
+        android:layout_width="175dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="384dp"
+        android:onClick="launchInfo"
+        android:text="Store Information"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mapButton2"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="12dp"
+        android:onClick="launchShoppingList"
+        android:text="Update Stock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapButton" />
+
+    <Button
+        android:id="@+id/logoutBtnUsr"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="12dp"
+        android:onClick="logout"
+        android:text="Log Out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapButton2" />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="452dp"
+        android:onClick="launchIndoorMap2"
+        android:text="View Indoor Map"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
