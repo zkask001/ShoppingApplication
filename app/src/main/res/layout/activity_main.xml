@@ -54,14 +54,13 @@
         android:layout_height="wrap_content"
         android:onClick="launchIndoorMap"
         android:text="Indoor Map"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtnNew"
-        app:layout_constraintVertical_bias="0.79"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.79" />
 
     <Button
         android:id="@+id/button4"
@@ -69,14 +68,13 @@
         android:layout_height="wrap_content"
         android:onClick="launchShoppingList"
         android:text="Shopping List"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.637"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtnNew"
-        app:layout_constraintVertical_bias="0.521"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/button6"
@@ -84,14 +82,13 @@
         android:layout_height="wrap_content"
         android:onClick="launchOldLogin"
         android:text="Old Login"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtnNew"
-        app:layout_constraintVertical_bias="0.521"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/button3"
@@ -100,14 +97,13 @@
         android:layout_marginStart="100dp"
         android:onClick="launchIndoorMap2"
         android:text="indoor map 2"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtnNew"
-        app:layout_constraintVertical_bias="0.795"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <ImageView
         android:id="@+id/imageView"
