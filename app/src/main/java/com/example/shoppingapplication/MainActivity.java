@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void toggle(View v){
 
     }
-
+//
 //    public void disable(View v){ //disables button + changes text of button
 //        v.setEnabled(false);
 //        Log.d("success","button disabled"); //for debugging, can see in Logcat
